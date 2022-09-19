@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+	<title>Door House</title>
+
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+
+</head>
+
+<body>
+
+
+
+	<div class="contact1">
+
+		<div class="container-contact1">
+
+			<div class="contact1-pic js-tilt" data-tilt>
+
+					<img src="logo.png">
+
+					
+
+					<!-- <div id="pasi">
+
+						
+
+					</div> -->
+
+						
+
+			</div>
+
+
+
+			<form class="contact1-form validate-form">
+
+				
+
+				<span id="title" class="contact1-form-title">
+
+					ფასის კალკულატორი
+
+				</span>
+
+				<center>
+
+					<div id="pasi">
+
+						
+
+					</div>
+
+				</center>
+
+				<div class="wrap-input1 validate-input" data-validate = "Name is required">
+
+					
+					<select id="kari" class="input1">
+					<option  id="airchiet" value="ტიპი">აირჩიეთ კარის ტიპი</option>
+					  <option id="gadakruli" value="გადაკრული">გადაკრული</option>
+					  <option  id="shegebili" value="შეღებილი">შეღებილი</option>
+					</select>
+					<br/>
+					<select id="kari" class="input1">
+					<option  id="airchiet" value="ტიპი">აირჩიეთ კარის ტიპი</option>
+					  <option id="standarti" value="გადაკრული">სტანდარტი</option>
+					  <option  id="2frtiani" value="შეღებილი">ორფრთიანი</option>
+					</select>
+
+				</div>
+				
+
+				<div class="wrap-input1 validate-input" data-validate = "Name is required">
+
+					<input class="input1" id="price" type="number" name="number" placeholder="კარის ფასი">
+
+					<span class="shadow-input1"></span>
+
+				</div>
+
+
+
+				<div class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+
+					<input class="input1" type="number" id="height" name="number" placeholder="სიმაღლე">
+
+					<span class="shadow-input1"></span>
+
+				</div>
+
+
+
+				<div class="wrap-input1 validate-input" data-validate = "Subject is required">
+
+					<input class="input1" type="number" id="width" name="number" placeholder="სიგანე">
+
+					<span class="shadow-input1"></span>
+
+				</div>
+
+
+
+				<div class="wrap-input1 validate-input" data-validate = "Message is required">
+
+					<input class="input1" type="number" id="scale" name="number" placeholder="კედლის სისქე">
+
+					<span class="shadow-input1"></span>
+
+				</div>
+
+				<input type="button" id="gamotvla" value="გამოთვლა" onclick="getcube()">
+				<input type="button" id="ganuleba" value="განულება" onclick="fun()">
+
+			</form>
+
+		</div>
+
+	</div>
+
+
+
+<script>  
+function fun() {  
+location.reload();  
+}  
+</script>
+
+
+
+
+
+<script type="text/javascript">  
+
+		function getcube(){
+
+		var price=0;
+
+		var height=0;
+
+		var width=0;
+
+		var scale=0;
+
+
+		 price=document.getElementById("price").value;
+
+		 height=document.getElementById("height").value;
+
+		 width=document.getElementById("width").value;
+
+		 scale=document.getElementById("scale").value;
+
+		if (price == 0 || height ==0 || width ==0 || scale ==0 || document.getElementById("airchiet").selected) {
+
+			alert("გთხოვთ შეავსოთ ყველა ველი");
+
+		}
+  
+
+		if (height > 220 && document.getElementById("gadakruli").selected) {
+			 height=height-220;
+			 height = Math.ceil(height / 10) * 10 * 3;
+		}else if (height > 220 && document.getElementById("shegebili").selected) {
+			height=height-220;
+			 height = Math.ceil(height / 10) * 10 * 5;
+		}else(height=0)
+
+
+		if (width > 90 && document.getElementById("gadakruli").selected && document.getElementById("standarti").selected) {
+			 width=width-90;
+			 width = Math.ceil(width / 10) * 10 * 3;}
+
+	else if (width > 120 && document.getElementById("gadakruli").selected && document.getElementById("2frtiani").selected) {
+			 	width=width-120;
+			 width = Math.ceil(width / 10) * 10 * 3;
+			 }
+
+
+		else if (width > 90 && document.getElementById("shegebili").selected && document.getElementById("standarti").selected) {
+			width=width-90;
+			width = Math.ceil(width / 10) * 10 * 5;
+		}else if (width > 120 && document.getElementById("shegebili").selected && document.getElementById("2frtiani").selected) {
+			width=width-120;
+			width = Math.ceil(width / 10) * 10 * 5;
+		}
+
+		else(width=0)
+
+
+		if (scale > 15 && document.getElementById("gadakruli").selected) {
+			 scale=(scale-8)*4;
+		}else if (scale > 15 && document.getElementById("shegebili").selected) {
+			scale=(scale-8)*10;
+		}else(scale=0)
+
+
+		
+		var lastprice = (height+width+scale);
+		lastprice = price*1 + lastprice;
+		lastprice = Math.ceil(lastprice / 10) * 10 ;
+        document.getElementById("pasi").innerHTML = '<h1>კარის ფასია: '+lastprice+'₾</h1>';
+
+
+	}
+
+
+
+
+
+
+
+		</script>  
+
+
+
+</body>
+
+</html>
+
